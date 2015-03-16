@@ -53,14 +53,15 @@ function createMap() {
     for(var i = 0; i < infoEmpresas.length; i++) {
         categories = [];
         infoEmpresas[i] = infoEmpresas[i].split(",");
-
         for(var k = 1; k < infoEmpresas[i].length - 7; k++) {
             categories[categories.length] = infoEmpresas[i][7+k];
 
-            if(categoriesCheckBox.indexOf(infoEmpresas[i][7+k]) <= -1) {
+            if($.inArray(infoEmpresas[i][7+k], categoriesCheckBox) <= -1) {
                 categoriesCheckBox[categoriesCheckBox.length] = infoEmpresas[i][7+k];
             }
         }
+
+        console.log("name: " + infoEmpresas[i][0] + "\tcategories: " + categories);
 
         addMakers(createMarkerOptions(infoEmpresas[i][0], infoEmpresas[i][1], infoEmpresas[i][2], infoEmpresas[i][3], categories, infoEmpresas[i][4], infoEmpresas[i][5], infoEmpresas[i][6], infoEmpresas[i][7]));
         markers[i].setMap(map);
@@ -83,7 +84,7 @@ function createCheckBoxes() {
         checkbox = document.createElement("input");
 
         checkbox.type = "checkbox";
-        checkbox.id = categoriesCheckBox[i];
+        checkbox.id = categoriesCheckBox[i].replace(" ", "-");
         checkbox.name = "categorie";
         checkbox.value = categoriesCheckBox[i];
         checkbox.checked = true;
@@ -94,21 +95,21 @@ function createCheckBoxes() {
 
         document.getElementById('mapOptions').appendChild(label);
 
-        $('#' + categoriesCheckBox[i]).change(handleCheckBox);
+        $('#' + categoriesCheckBox[i].replace(" ", "-")).change(handleCheckBox);
     }
 }
 
 function handleCheckBox() {
     if($(this).is(':checked')) {
         for(var i = 0; i < places.length - 1; i++) {
-            if(places[i].categories.indexOf(this.value) > -1) {
+            if($.inArray(this.value, places[i].categories) > -1) {
                 markers[i].setVisible(true);
                 console.log(places[i].name + " true");
             }
         }
     } else {
         for(var k = 0; k < places.length - 1; k++) {
-            if(places[k].categories.indexOf(this.value) > -1) {
+            if($.inArray(this.value, places[k].categories) > -1) {
                 markers[k].setVisible(false);
                 console.log(places[k].name + " false");
             }
