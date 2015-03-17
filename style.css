@@ -3,9 +3,14 @@ body {
     margin: 0;
 }
 
+#fileinput {
+    height: 4%;
+    width: 100%;
+}
+
 #map {
     position: absolute;
-    top: 0%;
+    top: 4%;
     left: 0%;
     height: 100%;
     width: 50%;
@@ -14,7 +19,7 @@ body {
 
 #sideBoard {
     position: relative;
-    top: 0%;
+    top: 4%;
     left: 50%;
     height: 100%;
     width: 50%;

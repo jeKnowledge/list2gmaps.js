@@ -11,7 +11,8 @@ var infoBoxes = [];
 var markers = [];
 var categoriesCheckBox =[];
 
-//var infoMarkers;
+var infoMarkers;
+var self = this;
 
 //criar marker com todas as informações
 function createMarkerOptions(name, phone, email, website, categories, address, postCode, lat, long) {
@@ -49,7 +50,7 @@ function createMap() {
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
     var categories;
 
-
+    console.log(self.infoMarkers.length);
     for(var i = 0; i < infoMarkers.length; i++) {
         categories = [];
         infoMarkers[i] = infoMarkers[i].split(",");
@@ -116,3 +117,43 @@ function handleCheckBox() {
         }
     }
 }
+
+function readLocalFile(file) {
+    var infoFile = new XMLHttpRequest();
+    infoFile.open("GET", file, true);
+
+    infoFile.onreadystatechange = function() {
+        if (infoFile.readyState === 4) {
+            self.infoMarkers = infoFile.responseText.split("\n");
+            createMap();
+        }
+    };
+    infoFile.onError = function() {
+        alert("Error loading file!");
+    };
+    infoFile.send(null);
+}
+
+function handleFileSelect(evt) {
+    var reader = new FileReader();
+    var f = evt.target.files[0];
+    var content;
+
+    reader.onload = (function(theFile) {
+        return function(e) {
+            content = e.target.result;
+            console.log(content);
+            self.infoMarkers = content.split("\n");
+            console.log(self.infoMarkers.length);
+            createMap();
+        };
+    })(f);
+
+    reader.readAsText(f);
+}
+
+$(document).ready(function () {
+    //readLocalFile("test.csv");
+
+    document.getElementById('files').addEventListener('change', handleFileSelect, true);
+});
