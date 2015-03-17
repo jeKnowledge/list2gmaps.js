@@ -8,6 +8,7 @@ function readLocalFile(file) {
     infoFile.onreadystatechange = function() {
         if (infoFile.readyState === 4) {
             self.infoMarkers = infoFile.responseText.split("\n");
+            createMap();
         }
     };
     infoFile.onError = function() {
@@ -27,7 +28,7 @@ function handleFileSelect(evt) {
             content = e.target.result;
 
             self.infoMarkers = content.split("\n");
-            window.open("map.html","_self");
+            createMap();
         };
     })(f);
 
