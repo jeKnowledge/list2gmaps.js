@@ -11,7 +11,7 @@ var infoBoxes = [];
 var markers = [];
 var categoriesCheckBox =[];
 
-var infoEmpresas;
+var infoMarkers;
 
 //criar marker com todas as informações
 function createMarkerOptions(name, phone, email, website, categories, address, postCode, lat, long) {
@@ -50,20 +50,20 @@ function createMap() {
     var categories;
 
 
-    for(var i = 0; i < infoEmpresas.length; i++) {
+    for(var i = 0; i < infoMarkers.length; i++) {
         categories = [];
-        infoEmpresas[i] = infoEmpresas[i].split(",");
-        for(var k = 1; k < infoEmpresas[i].length - 7; k++) {
-            categories[categories.length] = infoEmpresas[i][7+k];
+        infoMarkers[i] = infoMarkers[i].split(",");
+        for(var k = 1; k < infoMarkers[i].length - 7; k++) {
+            categories[categories.length] = infoMarkers[i][7+k];
 
-            if($.inArray(infoEmpresas[i][7+k], categoriesCheckBox) <= -1) {
-                categoriesCheckBox[categoriesCheckBox.length] = infoEmpresas[i][7+k];
+            if($.inArray(infoMarkers[i][7+k], categoriesCheckBox) <= -1) {
+                categoriesCheckBox[categoriesCheckBox.length] = infoMarkers[i][7+k];
             }
         }
 
-        console.log("name: " + infoEmpresas[i][0] + "\tcategories: " + categories);
+        console.log("name: " + infoMarkers[i][0] + "\tcategories: " + categories);
 
-        addMakers(createMarkerOptions(infoEmpresas[i][0], infoEmpresas[i][1], infoEmpresas[i][2], infoEmpresas[i][3], categories, infoEmpresas[i][4], infoEmpresas[i][5], infoEmpresas[i][6], infoEmpresas[i][7]));
+        addMakers(createMarkerOptions(infoMarkers[i][0], infoMarkers[i][1], infoMarkers[i][2], infoMarkers[i][3], categories, infoMarkers[i][4], infoMarkers[i][5], infoMarkers[i][6], infoMarkers[i][7]));
         markers[i].setMap(map);
         addEvent(map, infoBoxes[i], markers[i]);
     }
@@ -117,24 +117,44 @@ function handleCheckBox() {
     }
 }
 
-//função inicial que vai carregar tudo
-function initialize() {
-    var infoFile = new XMLHttpRequest();
-    var self = this;
-    infoFile.open("GET", "test.csv", true);
-
-    infoFile.onreadystatechange = function() {
-        if (infoFile.readyState === 4) {
-            self.infoEmpresas = infoFile.responseText.split("\n");
-            createMap();
-        }
-    };
-    infoFile.onError = function() {
-        alert("Error loading file!");
-    };
-    infoFile.send(null);
-}
+// function readLocalFile(file) {
+//     var infoFile = new XMLHttpRequest();
+//     var self = this;
+//     infoFile.open("GET", file, true);
+//
+//     infoFile.onreadystatechange = function() {
+//         if (infoFile.readyState === 4) {
+//             self.infoMarkers = infoFile.responseText.split("\n");
+//             createMap();
+//         }
+//     };
+//     infoFile.onError = function() {
+//         alert("Error loading file!");
+//     };
+//     infoFile.send(null);
+// }
+//
+// function handleFileSelect(evt) {
+//     var reader = new FileReader();
+//     var f = evt.target.files[0];
+//     var self = this;
+//     var content;
+//
+//     reader.onload = (function(theFile) {
+//         return function(e) {
+//             content = e.target.result;
+//
+//             self.infoMarkers = content.split("\n");
+//             window.open("map.html","_self");
+//             createMap();
+//         };
+//     })(f);
+//
+//     reader.readAsText(f);
+// }
 
 $(document).ready(function () {
-    initialize();
+    //readLocalFile("test.csv");
+
+    //document.getElementById('files').addEventListener('change', handleFileSelect, false);
 });
