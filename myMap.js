@@ -70,14 +70,28 @@ function createMap() {
 }
 
 function createMapMarkers() {
-    console.log("hi");
     for(var i = 0; i < places.length - 1; i++) {
-        $('#mapMarkers').append("<div class='marker'><p><b>" + places[i].name + "</b></br>" +  places[i].address + "</br>" +  places[i].phone+ "</br>" +  places[i].email + "</br>" +  places[i].website + "</p></div>");
+        console.log(places[i]);
+        $('#mapMarkers').append("<div class='marker' id=" + places[i].name.replace(" ", "-")+ "><p><b>" + places[i].name + "</b></br>" +  places[i].address + "</br>" +  places[i].phone+ "</br>" +  places[i].email + "</br>" +  places[i].website + "</p></div>");
     }
 }
 
 function handleMarkerList() {
-
+    if($(this).is(':checked')){
+        for(var k = 0; k < places.length - 1; k++){
+            if($.inArray(this.value, places[k].categories) > -1) {
+                console.log("entra ali");
+                $('#mapMarkers').append("<div class='marker' id=" + places[k].name.replace(" ", "-")+ "><p><b>" + places[k].name + "</b></br>" +  places[k].address + "</br>" +  places[k].phone+ "</br>" +  places[k].email + "</br>" +  places[k].website + "</p></div>");
+            }
+        }
+    } else {
+        for(var i = 0; i < places.length - 1; i++){
+            if($.inArray(this.value, places[i].categories) > -1) {
+                console.log("entra aqui");
+                $("#" + places[i].name.replace(" ", "-")).remove();
+            }
+        }
+    }
 }
 
 //Criar menu
