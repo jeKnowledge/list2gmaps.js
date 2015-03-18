@@ -12,30 +12,37 @@ body {
     position: absolute;
     top: 4%;
     left: 0%;
-    height: 100%;
+    height: 95%;
     width: 50%;
     margin: 0;
 }
 
 #sideBoard {
-    position: relative;
+    position: absolute;
+    padding-left: 2%;
     top: 4%;
     left: 50%;
-    height: 100%;
+    height: 95%;
     width: 50%;
+    border:solid 1px black;
 }
 
 
 #mapOptions {
     position: relative;
     top: 0%;
-    min-height: 25%;
-    max-width: 95%;
     height: auto;
     width: auto;
-    padding-left: 2.5%;
+    border:solid 1px black;
 }
 
 #mapMarkers {
-    position: relative
+    position: relative;
+    border:solid 1px black;
+}
+
+.marker {
+    position: relative;
+    padding-left: 2%;
+    border:solid 1px black;
 }

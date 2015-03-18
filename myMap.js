@@ -50,7 +50,6 @@ function createMap() {
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
     var categories;
 
-    console.log(self.infoMarkers.length);
     for(var i = 0; i < infoMarkers.length; i++) {
         categories = [];
         infoMarkers[i] = infoMarkers[i].split(",");
@@ -62,13 +61,23 @@ function createMap() {
             }
         }
 
-        console.log("name: " + infoMarkers[i][0] + "\tcategories: " + categories);
-
         addMakers(createMarkerOptions(infoMarkers[i][0], infoMarkers[i][1], infoMarkers[i][2], infoMarkers[i][3], categories, infoMarkers[i][4], infoMarkers[i][5], infoMarkers[i][6], infoMarkers[i][7]));
         markers[i].setMap(map);
         addEvent(map, infoBoxes[i], markers[i]);
     }
     createCheckBoxes();
+    createMapMarkers();
+}
+
+function createMapMarkers() {
+    console.log("hi");
+    for(var i = 0; i < places.length - 1; i++) {
+        $('#mapMarkers').append("<div class='marker'><p><b>" + places[i].name + "</b></br>" +  places[i].address + "</br>" +  places[i].phone+ "</br>" +  places[i].email + "</br>" +  places[i].website + "</p></div>");
+    }
+}
+
+function handleMarkerList() {
+
 }
 
 //Criar menu
@@ -97,6 +106,7 @@ function createCheckBoxes() {
         document.getElementById('mapOptions').appendChild(label);
 
         $('#' + categoriesCheckBox[i].replace(" ", "-")).change(handleCheckBox);
+        $('#' + categoriesCheckBox[i].replace(" ", "-")).change(handleMarkerList);
     }
 }
 
@@ -142,12 +152,14 @@ function handleFileSelect(evt) {
     reader.onload = (function(theFile) {
         return function(e) {
             content = e.target.result;
-            console.log(content);
             self.infoMarkers = content.split("\n");
-            console.log(self.infoMarkers.length);
             createMap();
         };
     })(f);
+    reader.onError = function() {
+        alert("Error loading file!");
+    };
+
 
     reader.readAsText(f);
 }
