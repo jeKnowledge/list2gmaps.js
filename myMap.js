@@ -10,6 +10,7 @@ var places = [];
 var infoBoxes = [];
 var markers = [];
 var categoriesCheckBox =[];
+var sideInfo = [];
 
 var infoMarkers;
 var self = this;
@@ -66,29 +67,54 @@ function createMap() {
         addEvent(map, infoBoxes[i], markers[i]);
     }
     createCheckBoxes();
-    createMapMarkers();
+    //createMapMarkers();
+
+    google.maps.event.addListener(map, 'bounds_changed', function() {
+        for(var i = 0; i < markers.length - 1; i++) {
+            if(map.getBounds().contains(markers[i].getPosition()) && markers[i].getVisible()) { //está dentro dos limites e está visivel
+                if($.inArray(places[i].name, sideInfo) < 0) {
+                    $('#mapMarkers').append("<div class='marker' id=" + places[i].name.replace(" ", "-")+ "><p><b>" + places[i].name + "</b></br>" +  places[i].address + "</br>" +  places[i].phone+ "</br>" +  places[i].email + "</br>" +  places[i].website + "</p></div>");
+                    sideInfo[sideInfo.length] = places[i].name;
+                }
+            } else {
+                if($.inArray(places[i].name, sideInfo) > -1) {
+                    $("#" + places[i].name.replace(" ", "-")).remove();
+                    index = sideInfo.indexOf(places[i].name);
+                    sideInfo.splice(index, 1);
+                }
+            }
+        }
+    });
+
 }
 
 function createMapMarkers() {
     for(var i = 0; i < places.length - 1; i++) {
         console.log(places[i]);
         $('#mapMarkers').append("<div class='marker' id=" + places[i].name.replace(" ", "-")+ "><p><b>" + places[i].name + "</b></br>" +  places[i].address + "</br>" +  places[i].phone+ "</br>" +  places[i].email + "</br>" +  places[i].website + "</p></div>");
+        sideInfo[sideInfo.length] = places[i].name;
     }
 }
 
 function handleMarkerList() {
+    var index;
     if($(this).is(':checked')){
         for(var k = 0; k < places.length - 1; k++){
             if($.inArray(this.value, places[k].categories) > -1) {
-                console.log("entra ali");
-                $('#mapMarkers').append("<div class='marker' id=" + places[k].name.replace(" ", "-")+ "><p><b>" + places[k].name + "</b></br>" +  places[k].address + "</br>" +  places[k].phone+ "</br>" +  places[k].email + "</br>" +  places[k].website + "</p></div>");
+                if($.inArray(places[k].name, sideInfo) < 0){
+                    $('#mapMarkers').append("<div class='marker' id=" + places[k].name.replace(" ", "-")+ "><p><b>" + places[k].name + "</b></br>" +  places[k].address + "</br>" +  places[k].phone+ "</br>" +  places[k].email + "</br>" +  places[k].website + "</p></div>");
+                    sideInfo[sideInfo.length] = places[k].name;
+                }
             }
         }
     } else {
         for(var i = 0; i < places.length - 1; i++){
             if($.inArray(this.value, places[i].categories) > -1) {
-                console.log("entra aqui");
-                $("#" + places[i].name.replace(" ", "-")).remove();
+                if($.inArray(places[i].name, sideInfo) > -1){
+                    $("#" + places[i].name.replace(" ", "-")).remove();
+                    index = sideInfo.indexOf(places[i].name);
+                    sideInfo.splice(index, 1);
+                }
             }
         }
     }
