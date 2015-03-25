@@ -36,6 +36,7 @@ body {
 
 #mapMarkers {
     position: relative;
+    max-height: 75%;
 }
 
 .marker {

@@ -66,6 +66,7 @@ function createMap() {
         markers[i].setMap(map);
         addEvent(map, infoBoxes[i], markers[i]);
     }
+    categoriesCheckBox.sort();
     createCheckBoxes();
     //createMapMarkers();
 
@@ -73,12 +74,13 @@ function createMap() {
         for(var i = 0; i < markers.length - 1; i++) {
             if(map.getBounds().contains(markers[i].getPosition()) && markers[i].getVisible()) { //está dentro dos limites e está visivel
                 if($.inArray(places[i].name, sideInfo) < 0) {
-                    $('#mapMarkers').append("<div class='marker' id=" + places[i].name.replace(" ", "-")+ "><p><b>" + places[i].name + "</b></br>" +  places[i].address + "</br>" +  places[i].phone+ "</br>" +  places[i].email + "</br>" +  places[i].website + "</p></div>");
+                    console.log(places[i].name.replace(/ /g, "-"));
+                    $('#mapMarkers').append("<div class='marker' id=" + places[i].name.replace(/ /g, "-")+ "><p><b>" + places[i].name + "</b></br>" +  places[i].address + "</br>" +  places[i].phone+ "</br>" +  places[i].email + "</br>" +  places[i].website + "</p></div>");
                     sideInfo[sideInfo.length] = places[i].name;
                 }
             } else {
                 if($.inArray(places[i].name, sideInfo) > -1) {
-                    $("#" + places[i].name.replace(" ", "-")).remove();
+                    $("#" + places[i].name.replace(/ /g, "-")).remove();
                     index = sideInfo.indexOf(places[i].name);
                     sideInfo.splice(index, 1);
                 }
@@ -91,7 +93,7 @@ function createMap() {
 function createMapMarkers() {
     for(var i = 0; i < places.length - 1; i++) {
         console.log(places[i]);
-        $('#mapMarkers').append("<div class='marker' id=" + places[i].name.replace(" ", "-")+ "><p><b>" + places[i].name + "</b></br>" +  places[i].address + "</br>" +  places[i].phone+ "</br>" +  places[i].email + "</br>" +  places[i].website + "</p></div>");
+        $('#mapMarkers').append("<div class='marker' id=" + places[i].name.replace(/ /g, "-")+ "><p><b>" + places[i].name + "</b></br>" +  places[i].address + "</br>" +  places[i].phone+ "</br>" +  places[i].email + "</br>" +  places[i].website + "</p></div>");
         sideInfo[sideInfo.length] = places[i].name;
     }
 }
@@ -102,7 +104,7 @@ function handleMarkerList() {
         for(var k = 0; k < places.length - 1; k++){
             if($.inArray(this.value, places[k].categories) > -1) {
                 if($.inArray(places[k].name, sideInfo) < 0){
-                    $('#mapMarkers').append("<div class='marker' id=" + places[k].name.replace(" ", "-")+ "><p><b>" + places[k].name + "</b></br>" +  places[k].address + "</br>" +  places[k].phone+ "</br>" +  places[k].email + "</br>" +  places[k].website + "</p></div>");
+                    $('#mapMarkers').append("<div class='marker' id=" + places[k].name.replace(/ /g, "-")+ "><p><b>" + places[k].name + "</b></br>" +  places[k].address + "</br>" +  places[k].phone+ "</br>" +  places[k].email + "</br>" +  places[k].website + "</p></div>");
                     sideInfo[sideInfo.length] = places[k].name;
                 }
             }
@@ -111,7 +113,7 @@ function handleMarkerList() {
         for(var i = 0; i < places.length - 1; i++){
             if($.inArray(this.value, places[i].categories) > -1) {
                 if($.inArray(places[i].name, sideInfo) > -1){
-                    $("#" + places[i].name.replace(" ", "-")).remove();
+                    $("#" + places[i].name.replace(/ /g, "-")).remove();
                     index = sideInfo.indexOf(places[i].name);
                     sideInfo.splice(index, 1);
                 }
@@ -134,7 +136,7 @@ function createCheckBoxes() {
         checkbox = document.createElement("input");
 
         checkbox.type = "checkbox";
-        checkbox.id = categoriesCheckBox[i].replace(" ", "-");
+        checkbox.id = categoriesCheckBox[i].replace(/ /g, "-");
         checkbox.name = "categorie";
         checkbox.value = categoriesCheckBox[i];
         checkbox.checked = true;
@@ -145,8 +147,8 @@ function createCheckBoxes() {
 
         document.getElementById('mapOptions').appendChild(label);
 
-        $('#' + categoriesCheckBox[i].replace(" ", "-")).change(handleCheckBox);
-        $('#' + categoriesCheckBox[i].replace(" ", "-")).change(handleMarkerList);
+        $('#' + categoriesCheckBox[i].replace(/ /g, "-")).change(handleCheckBox);
+        $('#' + categoriesCheckBox[i].replace(/ /g, "-")).change(handleMarkerList);
     }
 }
 
