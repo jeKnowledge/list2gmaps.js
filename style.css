@@ -4,15 +4,15 @@ body {
 }
 
 #fileinput {
-    height: 4%;
+    height: 3%;
     width: 100%;
 }
 
 #map {
     position: absolute;
-    top: 4%;
+    top: 3%;
     left: 0%;
-    height: 95%;
+    height: 97%;
     width: 50%;
     margin: 0;
 }
@@ -20,9 +20,9 @@ body {
 #sideBoard {
     position: absolute;
     padding-left: 2%;
-    top: 4%;
+    top: 3%;
     left: 50%;
-    height: 95%;
+    height: 97%;
     width: 50%;
 }
 
@@ -32,6 +32,7 @@ body {
     top: 0%;
     height: auto;
     width: auto;
+    max-height: 25%;
 }
 
 #mapMarkers {
