@@ -12,7 +12,7 @@ then in your Javacript file you create a list2gmaps object:
 
 	var myMap = new list2gmaps(selector, locations);
 
-where selector is your id for where you want the map to go and locations is an array of objects of the type: 
+where selector is your id for where you want the map to go and locations is an array of objects of the type:
 
 	{
         name: "Spot A",
@@ -23,7 +23,7 @@ where selector is your id for where you want the map to go and locations is an a
             latitude: 40.214716,
             longitude: -8.408729
         }
-    } 
+    }
 
 
 Features
