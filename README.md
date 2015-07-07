@@ -1,18 +1,18 @@
 list2gmaps.js
 ========
 
-A simple javacript library to build maps using google maps.
+A simple JavaScript library to build maps using Google Maps.
 
-Couldn't be easier, in your HTML just file import:
+Couldn't be easier, in your HTML just import:
 
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="../lib/list2gmaps.js"></script>
 
-then in your Javacript file you create a list2gmaps object:
+then in your JavaScript file, you create a list2gmaps object:
 
 	var myMap = new list2gmaps(selector, locations);
 
-where selector is your id for where you want the map to go and locations is an array of objects of the type:
+where selector is your `id` for where you want the map to go and `locations` is an array of objects of the following type:
 
 	{
         name: "Spot A",
