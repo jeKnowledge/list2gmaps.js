@@ -42,8 +42,6 @@ Just add the list2gmaps.js file to your lib folder.
 DOM Structure
 -------
 
-Checkboxes are created with the id corresponding to their categorie name with all the spaces converted in to '-' and a class 'list2gmaps-category-checkbox'.
+Checkboxes are created with the id corresponding to their categorie name with all the spaces converted in to '-' and a class `list2gmaps-category-checkbox`.
 
-Every information box an id corresponding to their marker name with all the spaces converted in to '-' and a class 'list2gmaps-info-container'.
-
-When a marker is open in the map if the information panel is active a class 'active' is added to the corresponding information container so that it can be highlighted.
+Every information box an id corresponding to their marker name with all the spaces converted in to '-' and a class `list2gmaps-info-container`.
