@@ -44,6 +44,6 @@ DOM Structure
 
 Checkboxes are created with the id corresponding to their categorie name with all the spaces converted in to '-' and a class 'categorieCheckbox'.
 
-Every information box an id corresponding to their marker name with all the spaces converted in to '-' and a class 'infoContainer'.
+Every information box an id corresponding to their marker name with all the spaces converted in to '-' and a class 'list2gmaps-info-container'.
 
 When a marker is open in the map if the information panel is active a class 'active' is added to the corresponding information container so that it can be highlighted.
