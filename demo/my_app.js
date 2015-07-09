@@ -1,6 +1,6 @@
 var locations = [
   {
-    name: "jeKnowledge",
+    name: "Red Light Software",
     address: "Rua Larga",
     categories: ["Empresa", "Eventos"],
 

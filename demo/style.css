@@ -6,6 +6,7 @@
 
 html, body {
   height: 100%;
+  position: relative;
 }
 
 #row-container {
@@ -20,6 +21,11 @@ html, body {
   padding: 0;
 }
 
+#sidebar {
+  max-height: 100%;
+  overflow-y: scroll;
+}
+
 #title {
   margin-top: 3%;
   font-family: 'Open Sans';
@@ -29,8 +35,9 @@ html, body {
 
 .introduction {
   font-family: 'Open Sans';
-  width: 87%;
+  width: 86%;
   font-size: 1.1em;
+  margin-bottom: 1.5%;
 }
 
 #text-separator {
