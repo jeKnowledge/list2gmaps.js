@@ -22,7 +22,7 @@ var locations = [
   },
 
   {
-    name: "Pastelaria da Adriana",
+    name: "Pastelaria Nova Flor",
     address: "Rua Fina",
     categories: ["Empresa"],
 
@@ -82,7 +82,7 @@ function descriptionInfoBox (item) {
 }
 
 function descriptionSideInfo (item) {
-  return "<div class=\"side-info-div\"><p><b>" + item.name + "</b></p><p>" + item.address + "</p></div>";
+  return "<div class=\"side-info-div\"><p class=\"item-listing-p\"><b>" + item.name + "</b></p><p class=\"item-listing-p\">" + item.address + "</p></div>";
 }
 
 $(document).ready(function () {

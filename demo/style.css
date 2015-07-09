@@ -1,7 +1,7 @@
 #map {
   width: 50%;
   height: 100%;
-  margin-right: 3%;
+  margin-right: 2.5%;
 }
 
 html, body {
@@ -22,15 +22,15 @@ html, body {
 }
 
 #sidebar {
-  max-height: 100%;
+  max-height: 95%;
   overflow-y: scroll;
 }
 
 #title {
-  margin-top: 3%;
+  margin-top: 6%;
   font-family: 'Open Sans';
   font-weight: 600;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
 }
 
 .introduction {
@@ -43,7 +43,7 @@ html, body {
 #text-separator {
   text-align: left;
   margin-left: 0;
-  width: 35%;
+  width: 85%;
 }
 
 #checkbox {
@@ -52,12 +52,23 @@ html, body {
 
 #checkbox li {
   list-style-type: none;
+  margin-bottom: 5px;
 }
 
 #checkbox li input {
   margin-right: 6px;
 }
 
+#footer {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+}
+
 .side-info-div {
   margin-bottom: 35px;
+}
+
+.item-listing-p {
+  margin: 0 !important;
 }
