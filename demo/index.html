@@ -8,27 +8,32 @@
     <link type="text/css" rel="stylesheet" href="style.css"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
-    <h1>Welcome to list2gmaps.js demo</h1>
+    <h1>list2gmaps.js demo</h1>
 
+    <div class="container">
+      <div id="demo" class="row">
+        <div class="col-xs-6" id="map"></div>
 
-    <div class="row" id="demo">
-      <div class="col-md-6" id="map"></div>
-      
-      <div class="col-md-6" id="side">
-        <div id="checkbox"></div>
-        <div id="info"></div>
+        <div class="col-xs-6" id="side">
+          <div id="checkbox">
+            <h2>Categories</h2>
+          </div>
+
+          <div id="info"></div>
+        </div>
       </div>
+
+      <!-- Include libraries -->
+      <script src="https://maps.googleapis.com/maps/api/js"></script>
+      <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+      <script src="../lib/list2gmaps.js"></script>
+
+      <!-- Include demo web app -->
+      <script src="my_app.js"></script>
     </div>
-
-    <!-- Include libraries -->
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="../lib/list2gmaps.js"></script>
-
-    <!-- Include demo web app -->
-    <script src="my_app.js"></script>
   </body>
 </html>
