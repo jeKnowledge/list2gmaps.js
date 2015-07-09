@@ -11,6 +11,39 @@ var locations = [
   },
 
   {
+    name: "Whitesmith",
+    address: "Rua Fina",
+    categories: ["Empresa"],
+
+    location: {
+      latitude: 40.314716,
+      longitude: -8.408729
+    }
+  },
+
+  {
+    name: "Pastelaria da Adriana",
+    address: "Rua Fina",
+    categories: ["Empresa"],
+
+    location: {
+      latitude: 40.360916,
+      longitude: -8.028952
+    }
+  },
+
+  {
+    name: "Pastelaria do Botelho (Codacy)",
+    address: "Rua Fina",
+    categories: ["Empresa"],
+
+    location: {
+      latitude: 38.725817,
+      longitude: -9.141664
+    }
+  },
+  
+  {
     name: "Spot B",
     address: "Rua Coiso",
     categories: ["Escola", "Eventos"],
