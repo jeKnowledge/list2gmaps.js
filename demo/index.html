@@ -12,28 +12,43 @@
   </head>
 
   <body>
-    <h1>list2gmaps.js demo</h1>
+    <div id="my-container" class="container">
+      <div class="row" id="row-container">
+        <div class="col-md-6" id="map"></div>
 
-    <div class="container">
-      <div id="demo" class="row">
-        <div class="col-xs-6" id="map"></div>
+        <div class="cold-md-6" id="sidebar">
+          <h1 id="title">list2gmaps.js demo</h1>
 
-        <div class="col-xs-6" id="side">
-          <div id="checkbox">
-            <h2>Categories</h2>
-          </div>
+          <p class="introduction">
+            Welcome to the list2gmaps.js demo, a simple library that handles
+            the creation of a Google Maps widget on a website. For this simple example
+            we came up with a list of startups around the world. We plug the data
+            (a simple array of locations) into list2gmaps.js and we get back a
+            pretty map and a few other cool things.
+          </p>
 
+          <p class="introduction">
+            For instance, you can scroll and pan around the map and the list of
+            places below will be automatically updated with the currently visible
+            locations. Plus, you get free filters for your locations which you
+            can tick (or untick) below as well.
+          </p>
+
+          <hr id="text-separator"/>
+          <div id="checkbox"></div>
+
+          <hr id="text-separator"/>
           <div id="info"></div>
         </div>
       </div>
-
-      <!-- Include libraries -->
-      <script src="https://maps.googleapis.com/maps/api/js"></script>
-      <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-      <script src="../lib/list2gmaps.js"></script>
-
-      <!-- Include demo web app -->
-      <script src="my_app.js"></script>
     </div>
+
+    <!-- Include libraries -->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="../lib/list2gmaps.js"></script>
+
+    <!-- Include demo web app -->
+    <script src="my_app.js"></script>
   </body>
 </html>
