@@ -42,7 +42,7 @@ var locations = [
       longitude: -9.141664
     }
   },
-  
+
   {
     name: "Spot B",
     address: "Rua Coiso",
