@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>list2gmaps.js demo</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <div id="my-container" class="container">
+      <div class="row" id="row-container">
+        <div class="col-md-6" id="map"></div>
+
+        <div class="cold-md-6" id="sidebar">
+          <h1 id="title">Welcome to the list2gmaps.js demo</h1>
+
+          <p class="introduction">
+            This page was built using list2gmaps.js, a simple library that handles
+            the creation of a Google Maps widget on a website. For this simple example
+            we came up with a list of startups around the world. We plug the data
+            (a simple array of locations) into list2gmaps.js and we get back a
+            pretty map and a few other cool things.
+          </p>
+
+          <p class="introduction">
+            For instance, you can scroll and pan around the map and the list of
+            places below will be automatically updated with the currently visible
+            locations. Plus, you get free filters for your locations which you
+            can tick (or untick) below as well.
+          </p>
+
+          <p class="introduction">
+            The library is very easy to use. In fact, feel free to
+            <a href="https://github.com/jeKnowledge/list2gmaps.js#list2gmapsjs">read</a> the documentation on GitHub.
+          </p>
+
+          <hr id="text-separator"/>
+          <div id="checkbox"></div>
+
+          <hr id="text-separator"/>
+          <div id="info"></div>
+
+          <div id="footer">
+            Made by <a href="http://jeknowledge.pt/">jeKnowledge</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include libraries -->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="lib/list2gmaps.js"></script>
+
+    <!-- Include demo web app -->
+    <script src="my_app.js"></script>
+  </body>
+</html>
